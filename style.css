@@ -10,13 +10,19 @@ body{
     color: white;
     display: flex;
     justify-content: center;
+    max-height: 100%;
 }
 
 .container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 90%;
 }
 
 .toolbar{
     background-color: purple;
+}
+
+.canvas{
+    background-color: white;
 }
