@@ -21,6 +21,11 @@ body{
 
 .toolbar{
     background-color: purple;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .canvas{
