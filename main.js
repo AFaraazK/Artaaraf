@@ -2,9 +2,14 @@ const canvas = document.getElementById('draw_window');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 let isDrawing = false;
 let lineWidth = 5;
+
+function updateCanvasSize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+updateCanvasSize();
 
 const draw = (e) => {
     if (!isDrawing) {
@@ -41,3 +46,4 @@ canvas.addEventListener('mouseup', () => {
 
 // continue drawing
 canvas.addEventListener('mousemove', draw);
+window.addEventListener('resize', updateCanvasSize);
