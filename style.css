@@ -1,25 +1,30 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-body{
+html, body {
+    height: 90vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
     background-color: rgb(12, 7, 15);
     font-family: monospace;
     color: white;
     display: flex;
     justify-content: center;
-    max-height: 100%;
+    align-items: center;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
-    width: 90%;
 }
 
-.toolbar{
+.toolbar {
     background-color: purple;
     display: flex;
     flex-direction: row;
@@ -28,7 +33,6 @@ body{
     align-items: center;
 }
 
-#draw_window{
+#draw_window {
     background-color: white;
-    width: 100%;
 }
