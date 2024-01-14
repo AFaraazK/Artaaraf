@@ -32,7 +32,14 @@ body {
     justify-content: space-around;
     align-items: center;
 }
+.toolbarElement{
+    display: flex;
+    align-items: center;
+    font-size: 2cap;
+    gap: 8px;
+}
 
 #draw_window {
     background-color: white;
+    cursor: crosshair;
 }
