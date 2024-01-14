@@ -57,7 +57,7 @@ button:hover {
 }
 .tools{
     display: flex;
-    gap: 8px;
+    gap: 4px;
     align-items: center;
     justify-content: center;
 }
@@ -71,6 +71,10 @@ button:hover {
     border: 2px solid #000000; 
     border-radius: 5px;
     cursor: pointer;
+}
+.secondaries{
+    display: flex;
+    gap: 25px;
 }
 #artaaraf{
     transition: color 0.2s ease, transform 0.3s ease;

@@ -19,26 +19,28 @@
                 <button class="tool_button" id="eraserButton"><img src="icons/979773.png" alt="" srcset="" width="20px"></button>
                 <button class="tool_button emojiLabel" id="clearButton">🗍</button>
             </div>
-            <div class="toolbarElement">
-                <label for="color" class="emojiLabel">🎨</label>
-                <input type="color" name="color" id="color" value="#000000">
+            <div class="secondaries">
+                <div class="toolbarElement">
+                    <label for="color" class="emojiLabel">🎨</label>
+                    <input type="color" name="color" id="color" value="#000000">
+                </div>
+                <div class="toolbarElement">
+                    <label for="lineWidth">🔳</label>
+                    <select id="lineWidth" name='lineWidth' >
+                        <option value="8">Eight</option>
+                        <option value="5" selected>Five</option>
+                        <option value="4">Four</option>
+                        <option value="9">Nine</option>
+                        <option value="1">One</option>
+                        <option value="7">Seven</option>
+                        <option value="6">Six</option>
+                        <option value="10">Ten</option>
+                        <option value="3">Three</option>
+                        <option value="2">Two</option>
+                    </select>
+                </div>
+                <button class="tool_button emojiLabel" id="saveButton">💾</button>
             </div>
-            <div class="toolbarElement">
-                <label for="lineWidth">🔳</label>
-                <select id="lineWidth" name='lineWidth' >
-                    <option value="8">Eight</option>
-                    <option value="5" selected>Five</option>
-                    <option value="4">Four</option>
-                    <option value="9">Nine</option>
-                    <option value="1">One</option>
-                    <option value="7">Seven</option>
-                    <option value="6">Six</option>
-                    <option value="10">Ten</option>
-                    <option value="3">Three</option>
-                    <option value="2">Two</option>
-                </select>
-            </div>
-            <button class="tool_button emojiLabel" id="saveButton">💾</button>
         </div>
     </div>
 </body>
