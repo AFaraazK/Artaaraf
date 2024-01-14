@@ -38,6 +38,13 @@ body {
     font-size: 2cap;
     gap: 8px;
 }
+button{
+    width: 30px;
+    height: 30px;
+}
+.emojiLabel{
+    font-size: 15px;
+}
 
 #draw_window {
     background-color: white;
