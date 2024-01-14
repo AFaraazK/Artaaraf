@@ -6,8 +6,14 @@ let isDrawing = false;
 let lineWidth = 5;
 
 function updateCanvasSize() {
+    // store the current canvas
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    
+    // redraw the stored image
+    ctx.putImageData(imageData, 0, 0);
 }
 updateCanvasSize();
 
