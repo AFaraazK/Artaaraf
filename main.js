@@ -68,11 +68,11 @@ eraserButton.addEventListener('click', () => {
     if(isErasing){
         isErasing = false;
         eraserButton.style.backgroundColor = '';
-        penButton.style.backgroundColor = 'red';
+        penButton.style.backgroundColor = 'rgb(70, 6, 48)';
     } else if(!isErasing){
         isErasing = true;
         penButton.style.backgroundColor = '';
-        eraserButton.style.backgroundColor = 'red'; 
+        eraserButton.style.backgroundColor = 'rgb(70, 6, 48)'; 
     }
 });
 
@@ -80,11 +80,11 @@ eraserButton.addEventListener('click', () => {
 penButton.addEventListener('click', () => {
     if(isErasing){
         isErasing = false;
-        penButton.style.backgroundColor = 'red';
-        eraserButton.style.backgroundColor = ''; 
+        penButton.style.backgroundColor = 'rgb(70, 6, 48)';
+        eraserButton.style.backgroundColor = 'white'; 
     } else if(!isErasing){
         isErasing = true;
-        penButton.style.backgroundColor = '';
-        eraserButton.style.backgroundColor = 'red';  
+        penButton.style.backgroundColor = 'white';
+        eraserButton.style.backgroundColor = 'rgb(70, 6, 48)';  
     }
 });
