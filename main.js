@@ -2,6 +2,7 @@ const canvas = document.getElementById('draw_window');
 const ctx = canvas.getContext('2d');
 const eraserButton = document.getElementById('eraserButton');
 const penButton = document.getElementById('penButton');
+const toolbar = document.getElementById('toolbar');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -76,7 +77,7 @@ eraserButton.addEventListener('click', () => {
     }
 });
 
-// erase button toggle
+// draw button toggle
 penButton.addEventListener('click', () => {
     if(isErasing){
         isErasing = false;
@@ -87,4 +88,16 @@ penButton.addEventListener('click', () => {
         penButton.style.backgroundColor = 'white';
         eraserButton.style.backgroundColor = 'rgb(70, 6, 48)';  
     }
+});
+
+// color and size toggle
+toolbar.addEventListener('change', e => {
+    if(e.target.id === 'color') {
+        ctx.strokeStyle = e.target.value;
+    }
+
+    if(e.target.id === 'lineWidth') {
+        lineWidth = e.target.value;
+    }
+    
 });
