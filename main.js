@@ -1,8 +1,13 @@
 const canvas = document.getElementById('draw_window');
 const ctx = canvas.getContext('2d');
+const eraserButton = document.getElementById('eraserButton');
+const penButton = document.getElementById('penButton');
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
 let isDrawing = false;
+let isErasing = false;
 let lineWidth = 5;
 
 function updateCanvasSize() {
@@ -18,7 +23,7 @@ function updateCanvasSize() {
 updateCanvasSize();
 
 const draw = (e) => {
-    if (!isDrawing) {
+    if (!isDrawing && !isErasing) {
         return;
     }
     ctx.lineWidth = lineWidth;
@@ -30,8 +35,12 @@ const draw = (e) => {
     const y = e.clientY - rect.top;
 
     // track to mouse position and draw the line
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    if (isErasing){
+        ctx.clearRect(x - lineWidth / 2, y - lineWidth / 2, lineWidth, lineWidth);
+    } else{
+        ctx.lineTo(x, y);
+        ctx.stroke();
+    }
 };
 
 // start drawing
@@ -53,3 +62,29 @@ canvas.addEventListener('mouseup', () => {
 // continue drawing
 canvas.addEventListener('mousemove', draw);
 window.addEventListener('resize', updateCanvasSize);
+
+// erase button toggle
+eraserButton.addEventListener('click', () => {
+    if(isErasing){
+        isErasing = false;
+        eraserButton.style.backgroundColor = '';
+        penButton.style.backgroundColor = 'red';
+    } else if(!isErasing){
+        isErasing = true;
+        penButton.style.backgroundColor = '';
+        eraserButton.style.backgroundColor = 'red'; 
+    }
+});
+
+// erase button toggle
+penButton.addEventListener('click', () => {
+    if(isErasing){
+        isErasing = false;
+        penButton.style.backgroundColor = 'red';
+        eraserButton.style.backgroundColor = ''; 
+    } else if(!isErasing){
+        isErasing = true;
+        penButton.style.backgroundColor = '';
+        eraserButton.style.backgroundColor = 'red';  
+    }
+});

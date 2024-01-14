@@ -45,6 +45,9 @@ button{
 .emojiLabel{
     font-size: 15px;
 }
+#penButton {
+    background-color: red;
+}
 
 #draw_window {
     background-color: white;
