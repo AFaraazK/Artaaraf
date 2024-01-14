@@ -3,6 +3,7 @@ const ctx = canvas.getContext('2d');
 const eraserButton = document.getElementById('eraserButton');
 const penButton = document.getElementById('penButton');
 const toolbar = document.getElementById('toolbar');
+const clearButton = document.getElementById('clearButton');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -68,11 +69,11 @@ window.addEventListener('resize', updateCanvasSize);
 eraserButton.addEventListener('click', () => {
     if(isErasing){
         isErasing = false;
-        eraserButton.style.backgroundColor = '';
+        eraserButton.style.backgroundColor = 'white';
         penButton.style.backgroundColor = 'rgb(70, 6, 48)';
     } else if(!isErasing){
         isErasing = true;
-        penButton.style.backgroundColor = '';
+        penButton.style.backgroundColor = 'white';
         eraserButton.style.backgroundColor = 'rgb(70, 6, 48)'; 
     }
 });
@@ -100,4 +101,13 @@ toolbar.addEventListener('change', e => {
         lineWidth = e.target.value;
     }
     
+});
+
+// clear
+clearButton.addEventListener('click', e => {
+    if(confirm('Are you sure you want to CLEAR the canvas?') == true){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    } else{
+        return;
+    }
 });
