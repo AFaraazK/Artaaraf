@@ -55,6 +55,13 @@ button:hover {
 #penButton {
     background-color: rgb(70, 6, 48);
 }
+.tools{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
 #lineWidth{
     background-color: rgb(70, 6, 48);
     color: white;

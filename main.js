@@ -4,6 +4,7 @@ const eraserButton = document.getElementById('eraserButton');
 const penButton = document.getElementById('penButton');
 const toolbar = document.getElementById('toolbar');
 const clearButton = document.getElementById('clearButton');
+const saveButton = document.getElementById('saveButton');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -111,3 +112,13 @@ clearButton.addEventListener('click', e => {
         return;
     }
 });
+
+// save canvas as png
+function saveCanvasAsImage() {
+    const dataUrl = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = 'canvas_image.png';
+    link.click();
+}
+saveButton.addEventListener('click', saveCanvasAsImage);
