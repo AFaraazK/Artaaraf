@@ -13,10 +13,13 @@ let isDrawing = false;
 let isErasing = false;
 let lineWidth = 5;
 
+// TODO: replace erase with drawing but set the color to white
+
 function updateCanvasSize() {
     // store the current canvas
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     
+    // resize the canvas
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
@@ -32,63 +35,79 @@ const draw = (e) => {
     ctx.lineWidth = lineWidth;
     ctx.lineCap = 'round';
 
-    // position of the mouse relative to the canvas
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    // Determine whether the event is a mouse event or a touch event
+    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+    const clientY = e.clientY || (e.touches && e.touches[0].clientY);
 
-    // track to mouse position and draw the line
-    if (isErasing){
+    // Get the canvas bounding rectangle
+    const rect = canvas.getBoundingClientRect();
+
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    // track to mouse position and draw/erase the line
+    if (isErasing) {
         ctx.clearRect(x - lineWidth / 2, y - lineWidth / 2, lineWidth, lineWidth);
-    } else{
+    } else {
         ctx.lineTo(x, y);
         ctx.stroke();
     }
 };
 
-// start drawing
+
+// event listeners for mouse events
 canvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
-
-    const rect = canvas.getBoundingClientRect();
     ctx.beginPath();
-    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+    draw(e);
 });
-
-// stop drawing
 canvas.addEventListener('mouseup', () => {
     isDrawing = false;
     ctx.stroke();
     ctx.beginPath();
 });
-
-// continue drawing
 canvas.addEventListener('mousemove', draw);
+
+// event listeners for touch events
+canvas.addEventListener('touchstart', (e) => {
+    isDrawing = true;
+    ctx.beginPath();
+    draw(e);
+});
+canvas.addEventListener('touchend', () => {
+    isDrawing = false;
+    ctx.stroke();
+    ctx.beginPath();
+});
+canvas.addEventListener('touchmove', draw);
+
 window.addEventListener('resize', updateCanvasSize);
 
-// erase button toggle
+// eraser button toggle
 eraserButton.addEventListener('click', () => {
-    if(isErasing){
+    isDrawing = false;
+    if (isErasing) {
         isErasing = false;
         eraserButton.style.backgroundColor = 'white';
         penButton.style.backgroundColor = 'rgb(70, 6, 48)';
-    } else if(!isErasing){
+    } else {
         isErasing = true;
         penButton.style.backgroundColor = 'white';
-        eraserButton.style.backgroundColor = 'rgb(70, 6, 48)'; 
+        eraserButton.style.backgroundColor = 'rgb(70, 6, 48)';
     }
 });
 
-// draw button toggle
+// pen button toggle
 penButton.addEventListener('click', () => {
-    if(isErasing){
+    isDrawing = false;
+    if (isErasing) {
         isErasing = false;
         penButton.style.backgroundColor = 'rgb(70, 6, 48)';
-        eraserButton.style.backgroundColor = 'white'; 
-    } else if(!isErasing){
+        eraserButton.style.backgroundColor = 'white';
+    } else {
         isErasing = true;
         penButton.style.backgroundColor = 'white';
-        eraserButton.style.backgroundColor = 'rgb(70, 6, 48)';  
+        eraserButton.style.backgroundColor = 'rgb(70, 6, 48)';
     }
 });
 
@@ -101,7 +120,6 @@ toolbar.addEventListener('change', e => {
     if(e.target.id === 'lineWidth') {
         lineWidth = e.target.value;
     }
-    
 });
 
 // clear
